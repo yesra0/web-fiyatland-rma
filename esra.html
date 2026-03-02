@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Premium - Yeşil ve Pembe Tema</title>
+    <style>
+        /* GENEL SIFIRLAMA */
+        * { 
+            box-sizing: border-box; /* Genişlik hesaplamalarına padding ve border'ı dahil eder */
+            margin: 0; padding: 0; 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+        }
+        
+        body { 
+            background-color: #b6ffcc; /* Çok açık yeşil arka plan */
+            display: flex; 
+            justify-content: center; /* Paketleri yatayda ortalar */
+            align-items: center;    /* Paketleri dikeyde ortalar */
+            min-height: 100vh;      /* Ekran yüksekliğinin tamamını kaplar */
+            padding: 20px; 
+            color: #1f2937;          /* Genel yazı rengini koyu gri yapar */
+        }
+
+        /* ANA KONTEYNER: Masaüstü (Flex-direction: row) */
+        .pricing-wrapper {
+            display: flex;
+            flex-direction: row;     /* İSTER 1: Paketlerin yan yana durmasını sağlar */
+            gap: 20px;               /* Paketler arasındaki boşluk */
+            align-items: stretch;    /* Paket boylarını birbirine eşitler */
+            max-width: 950px;
+            width: 100%;
+        }
+
+        /* KART TASARIMI */
+        .card {
+            background: #ffb2b2;     /* Beyaz kart arka planı */
+            padding: 40px 30px;
+            border-radius: 20px;
+            flex: 1;                 /* Tüm kartların eşit genişlikte olmasını sağlar */
+            display: flex;
+            flex-direction: column;  /* Kart içeriğini dikey dizer */
+            text-align: center;
+            border: 2px solid #bbf7d0; /* Kart kenarlarına ince açık yeşil çerçeve */
+            transition: 0.4s ease;   /* Hover efekti geçiş süresi */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ÖNE ÇIKAN PAKET: Bireysel (İSTER 3) */
+        .card.featured {
+            background: #ffc3c3;
+            border: 3px solid #f472b6;   /* Parlak pembe çerçeve ile öne çıkarma */
+            transform: scale(1.08);      /* Kartı diğerlerinden daha büyük yapar */
+            box-shadow: 0 20px 25px -5px rgba(244, 114, 182, 0.3), 0 10px 10px -5px rgba(244, 114, 182, 0.2); /* Pembe parlama efekti */
+            z-index: 1;
+        }
+
+        .card h3 { 
+            font-size: 1.4rem;
+            margin-bottom: 10px; 
+            color: #166534; /* Koyu yeşil başlık rengi */
+        }
+        
+        /* FİYAT ALANI */
+        .price { 
+            font-size: 2.2rem; 
+            font-weight: bold; 
+            margin: 20px 0; 
+            color: #be185d; /* Koyu pembe fiyat rengi */
+        }
+        .price span { font-size: 1rem; color: #6b7280; } /* Ay yazısı gri */
+
+        /* ÖZELLİKLER LİSTESİ (İSTER 4: Buton Hizalama) */
+        .features { 
+            list-style: none; 
+            margin-bottom: 30px; 
+            flex-grow: 1; /* TÜM BOŞLUĞU DOLDURUR: İçerik az olsa da butonu en alta sabitler */
+            color: #4b5563; /* Orta gri özellik yazıları */
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .features li { padding: 10px 0; border-bottom: 1px solid #e5e7eb; } /* Açık gri çizgi */
+        .features li:last-child { border-bottom: none; }
+
+        /* BUTON TASARIMI */
+        .btn {
+            background-color: #10b981; /* Ana yeşil buton rengi */
+            color: rgb(255, 255, 255);
+            padding: 14px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .btn:hover { background-color: #059669; } /* Üzerine gelince buton koyulaşır */
+
+        /* Öne Çıkan Paket Butonu */
+        .featured .btn {
+            background-color: #ec4899; /* Pembe buton */
+        }
+        .featured .btn:hover {
+            background-color: #db2777; /* Üzerine gelince buton koyulaşır */
+        }
+
+        /* MOBİL GÖRÜNÜM (İSTER 2: Flex-direction: column) */
+        @media (max-width: 768px) {
+            .pricing-wrapper {
+                flex-direction: column; /* İSTER 2: Paketleri alt alta dizer */
+                padding: 40px 0;
+            }
+            .card.featured {
+                transform: scale(1);    /* Mobilde ekran dışına taşmaması için büyütmeyi kapatır */
+                margin: 25px 0;          /* Paketler arası dikey boşluk */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pricing-wrapper">
+        <div class="card">
+            <h3>Öğrenci</h3>
+            <div class="price">₺123,69 <span>/ ay</span></div>
+            <ul class="features">
+                <li>Reklamsız </li>
+                <li>Arka planda oynatma</li>
+                <li>Esra Music</li>
+            </ul>
+            <a href="#" class="btn">Hemen Başla</a>
+        </div>
+
+        <div class="card featured">
+            <h3>Bireysel</h3>
+            <div class="price">₺265,34 <span>/ ay</span></div>
+            <ul class="features">
+                <li>Reklamsız ve Çevrimdışı</li>
+                <li>Esra Music Premium</li>
+                <li>1 Ay Ücretsiz Deneme</li>
+            </ul>
+            <a href="#" class="btn">Ücretsiz Deneyin</a>
+        </div>
+
+        <div class="card">
+            <h3>Aile</h3>
+            <div class="price">₺340,99 <span>/ ay</span></div>
+            <ul class="features">
+                <li>Herkes için Aynı Profil</li>
+                <li>3 Kişiye Kadar Üye</li>
+                <li>Reklamsız </li>
+            </ul>
+            <a href="#" class="btn">Hemen Başla</a>
+        </div>
+    </div>
+
+</body>
+</html>
